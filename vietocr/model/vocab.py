@@ -24,7 +24,7 @@ class Vocab():
             try: 
                 encod.append(self.c2i[c])
             except KeyError:
-                encod.append("*")
+                encod.append(self.mask_token)
         try:
             return [self.go] + encod + [self.eos]
         except:
