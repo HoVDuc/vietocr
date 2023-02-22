@@ -32,8 +32,9 @@ def download(url, quiet=False):
     return full_path
 
 def download_config(id):
-    url = 'https://github.com/HoVDuc/vietocr/blob/master/config/{}'.format(id)
+    url = 'https://raw.githubusercontent.com/HoVDuc/vietocr/master/config/{}'.format(id)
     r = requests.get(url)
+    print(r)
     config = yaml.safe_load(r.text)
     return config
 
