@@ -8,17 +8,22 @@ class Vocab():
         self.chars = chars
 
         self.c2i = {c:i+4 for i, c in enumerate(chars)}
+        print(self.c2i)
 
         self.i2c = {i+4:c for i, c in enumerate(chars)}
-        
+        print(self.i2c)
+                
         self.i2c[0] = '<pad>'
         self.i2c[1] = '<sos>'
         self.i2c[2] = '<eos>'
         self.i2c[3] = '*'
 
     def encode(self, chars):
-        return [self.go] + [self.c2i[c] for c in chars] + [self.eos]
-    
+        try:
+            return [self.go] + [self.c2i[c] for c in chars] + [self.eos]
+        except:
+            print('*')
+        
     def decode(self, ids):
         first = 1 if self.go in ids else 0
         last = ids.index(self.eos) if self.eos in ids else None
