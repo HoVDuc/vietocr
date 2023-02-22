@@ -20,7 +20,8 @@ class Vocab():
 
     def encode(self, chars):
         try:
-            return [self.go] + [self.c2i[c] for c in chars] + [self.eos]
+            encod = [self.go] + [self.c2i[c] for c in chars] + [self.eos]
+            return encod
         except:
             print('*')
         
