@@ -19,9 +19,14 @@ class Vocab():
         self.i2c[3] = '*'
 
     def encode(self, chars):
+        encod = []
+        for c in chars:
+            try: 
+                encod.append(self.c2i[c])
+            except KeyError:
+                encod.append("*")
         try:
-            encod = [self.go] + [self.c2i[c] for c in chars] + [self.eos]
-            return encod
+            return [self.go] + encod + [self.eos]
         except:
             print('*')
         
